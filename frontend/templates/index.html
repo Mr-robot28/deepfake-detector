@@ -1,0 +1,13 @@
+﻿<!doctype html>
+<title>Deepfake Detector</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<h1>Upload Image</h1>
+<form method="post" enctype="multipart/form-data">
+  <input type="file" name="file" accept=".jpg,.jpeg,.png" required>
+  <button type="submit">Analyse</button>
+</form>
+{% if result %}
+  <h2>Result for {{ fname }}</h2>
+  <p>Real: {{ "%.2f"|format(result.real*100) }} %</p>
+  <p>Fake: {{ "%.2f"|format(result.fake*100) }} %</p>
+{% endif %}
